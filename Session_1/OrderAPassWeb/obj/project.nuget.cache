@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DsyBrgwJOGJ24lGuHmEeKNP2ccpLFL+SiBPJfacXNAR4gat+cYcZx++qu5ueB+y3bGuI8FtP/HkogPfRQZF5Iw==",
+  "success": true,
+  "projectFilePath": "D:\\SolutionForBusiness\\Session_1\\OrderAPassWeb\\OrderAPassWeb.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\student\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
+  ],
+  "logs": []
+}
