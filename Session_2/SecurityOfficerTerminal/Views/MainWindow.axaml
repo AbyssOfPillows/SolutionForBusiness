@@ -1,0 +1,98 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SecurityOfficerTerminal.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SecurityOfficerTerminal.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="SecurityOfficerTerminal">
+
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<ScrollViewer>
+		<StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Дата:"></TextBlock>
+				<TextBox Text="{Binding Date}"></TextBox>
+				<TextBlock Text="Тип:"></TextBlock>
+				<TextBox Text="{Binding Type}"></TextBox>
+				<TextBlock Text="Подразделение:"></TextBlock>
+				<TextBox Text="{Binding Departament}"></TextBox>
+			</StackPanel>
+			<Button Command="{Binding Filtration}">Фильтрация</Button>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Фамилия:"></TextBlock>
+				<TextBox Text="{Binding Surname}"></TextBox>
+				<TextBlock Text="Имя:"></TextBlock>
+				<TextBox Text="{Binding Name}"></TextBox>
+				<TextBlock Text="Отчество:"></TextBlock>
+				<TextBox Text="{Binding Patronymic}"></TextBox>
+				<TextBlock Text="Номер паспорта:"></TextBlock>
+				<TextBox Text="{Binding PasportNumber}"></TextBox>
+				<Button Command="{Binding Search}" Content="Найти"></Button>
+			</StackPanel>
+			<ListBox ItemsSource="{Binding Visitors}" SelectedIndex="{Binding ItemIndex}">
+				<ListBox.ItemTemplate >
+					<DataTemplate>
+						<StackPanel>
+							<TextBlock Text="Идентификатор:"></TextBlock>
+							<TextBlock Text="{Binding Id}"></TextBlock>
+							<TextBlock Text="Жел.дата(начало):"></TextBlock>
+							<TextBlock Text="{Binding DesiredStartDate}"></TextBlock>
+							<TextBlock Text="Жел.дата(конец):"></TextBlock>
+							<TextBlock Text="{Binding DesiredEndDate}"></TextBlock>
+							<TextBlock Text="Цель:"></TextBlock>
+							<TextBlock Text="{Binding Purpose}"></TextBlock>
+							<TextBlock Text="Отдел:"></TextBlock>
+							<TextBlock Text="{Binding Employee.Department.Name}"></TextBlock>
+							<TextBlock Text="Фамилия сотрудника:"></TextBlock>
+							<TextBlock Text="{Binding Employee.Surname}"></TextBlock>
+							<TextBlock Text="Имя сотрудника:"></TextBlock>
+							<TextBlock Text="{Binding Employee.Name}"></TextBlock>
+							<TextBlock Text="Группа:"></TextBlock>
+							<TextBlock Text="{Binding Group.Name}"></TextBlock>
+							<TextBlock Text="Посетители:"></TextBlock>
+							<ListBox ItemsSource="{Binding Group.Visitors}">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<StackPanel>
+											<TextBlock Text="Идентификатор:"></TextBlock>
+											<TextBlock Text="{Binding Id}"></TextBlock>
+											<TextBlock Text="Фамилия:"></TextBlock>
+											<TextBlock Text="{Binding Surname}"></TextBlock>
+											<TextBlock Text="Имя:"></TextBlock>
+											<TextBlock Text="{Binding Name}"></TextBlock>
+											<TextBlock Text="Отчество:"></TextBlock>
+											<TextBlock Text="{Binding Patronymic}"></TextBlock>
+											<TextBlock Text="Почта:"></TextBlock>
+											<TextBlock Text="{Binding Mail}"></TextBlock>
+											<TextBlock Text="Номер телефона:"></TextBlock>
+											<TextBlock Text="{Binding NumberPhone}"></TextBlock>
+											<TextBlock Text="Дата рождения:"></TextBlock>
+											<TextBlock Text="{Binding DateOfBirth}"></TextBlock>
+											<TextBlock Text="Логин:"></TextBlock>
+											<TextBlock Text="{Binding Login}"></TextBlock>
+											<TextBlock Text="Пароль:"></TextBlock>
+											<TextBlock Text="{Binding Password}"></TextBlock>
+											<TextBlock Text="Номер паспорта:"></TextBlock>
+											<TextBlock Text="{Binding PasportNumber}"></TextBlock>
+											<TextBlock Text="Серия паспорта:"></TextBlock>
+											<TextBlock Text="{Binding PasportSeria}"></TextBlock>
+										</StackPanel>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<Button Command="{Binding Edit}" Content="Редактировать"></Button>
+			<Button Command="{Binding Reload}" Content="Обновить"></Button>
+		</StackPanel>
+	</ScrollViewer>
+</Window>

@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:UsersIBServiceTerminal.ViewModels"
+		x:DataType="vm:AuthWindowViewModel"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="UsersIBServiceTerminal.AuthWindow"
+        Title="AuthWindow">
+	<Window.Styles>
+		<Style Selector="Grid">
+			<Setter Property="Margin" Value="1"></Setter>
+		</Style>
+		<Style Selector="TextBlock">
+			<Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+		</Style>
+		<Style Selector="TextBox">
+			<Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+			<Setter Property="Grid.Column" Value="1"></Setter>
+		</Style>
+	</Window.Styles>
+
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+		<Grid HorizontalAlignment="Stretch" ColumnDefinitions="150,200">
+			<TextBlock Grid.ColumnSpan="1">Тип пользователя</TextBlock>
+			<ComboBox Grid.ColumnSpan="2" ItemsSource="{Binding Types}" SelectedItem="{Binding Type}" Grid.Column="2" HorizontalAlignment="Stretch">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}"></TextBlock>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+		</Grid>
+		<Grid ColumnDefinitions="150,200">
+			<TextBlock>Логин</TextBlock>
+			<TextBox Text="{Binding Login}"></TextBox>
+		</Grid>
+		<Grid ColumnDefinitions="150,200">
+			<TextBlock>Пароль</TextBlock>
+			<TextBox Text="{Binding Password}"></TextBox>
+		</Grid>
+		<Grid ColumnDefinitions="150,200">
+			<TextBlock>Секретное слово</TextBlock>
+			<TextBox Text="{Binding SecretWord}"></TextBox>
+		</Grid>
+		<Button Content="Войти в систему" Command="{Binding Auth}" HorizontalAlignment="Center"></Button>
+	</StackPanel>
+</Window>
