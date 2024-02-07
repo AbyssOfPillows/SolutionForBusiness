@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AdminTerminal.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AdminTerminal.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AdminTerminal">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	<Window.Styles>
+		<Style Selector="Grid">
+			<Setter Property="Margin" Value="1"></Setter>
+		</Style>
+		<Style Selector="Button">
+			<Setter Property="Margin" Value="1"></Setter>
+			<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+		</Style>
+		<Style Selector="StackPanel">
+			<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+			<Setter Property="VerticalAlignment" Value="Center"></Setter>
+		</Style>
+		<Style Selector="TextBox">
+			<Setter Property="Grid.Column" Value="1"></Setter>
+		</Style>
+	</Window.Styles>
+
+	<StackPanel>
+		<TextBlock Text="{Binding FioAdmin}" HorizontalAlignment="Right"></TextBlock>
+		<Line StartPoint="0,10" EndPoint="2000,10" Stroke="Black" StrokeThickness="1"></Line>
+		<StackPanel Orientation="Horizontal" Height="400">
+			<StackPanel>
+				<Grid ColumnDefinitions="150,200">
+					<TextBlock Text="Фамилия"></TextBlock>
+					<TextBox Text="{Binding Surname}"></TextBox>
+				</Grid>
+				<Grid ColumnDefinitions="150,200">
+					<TextBlock Text="Имя"></TextBlock>
+					<TextBox Text="{Binding Name}"></TextBox>
+				</Grid>
+				<Grid ColumnDefinitions="150,200">
+					<TextBlock Text="Отчество"></TextBlock>
+					<TextBox Text="{Binding Patronimyc}"></TextBox>
+				</Grid>
+				<Grid ColumnDefinitions="150,200">
+					<TextBlock Text="Пол"></TextBlock>
+					<ComboBox Grid.Column="1" Grid.ColumnSpan="2" SelectedIndex="{Binding Sex}" HorizontalAlignment="Stretch">
+						<ComboBoxItem>М</ComboBoxItem>
+						<ComboBoxItem>Ж</ComboBoxItem>
+					</ComboBox>
+				</Grid>
+				<Grid ColumnDefinitions="150,200">
+					<TextBlock Text="Должность"></TextBlock>
+					<TextBox Text="{Binding Post}"></TextBox>
+				</Grid>
+				<Grid ColumnDefinitions="150,200">
+					<Button Content="Сохранить" Command="{Binding SaveUser}"></Button>
+					<Button Grid.Column="1" Content="Отмена" Command="{Binding Cancel}"></Button>
+				</Grid>
+					
+			</StackPanel>
+			<StackPanel>
+				<Image Width="150"></Image>
+				<Button Content="Загрузить"></Button>
+			</StackPanel>
+
+		</StackPanel>
+	</StackPanel>
+
+</Window>
